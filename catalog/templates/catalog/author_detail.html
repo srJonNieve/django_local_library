@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+    <title>{{ author.title }}</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Title: {{ author.last_name }}, {{author.first_name}}</h1>
+
+    <p><strong>Date of birth: </strong>{{ author.date_of_birth }}</p>
+    <p><strong>Died: </strong>
+        {% if author.date_of_death %}
+            {{ author.date_of_death }}
+        {% endif%}
+        </p>
+    
+
+    <div style="margin-left:20px;margin_top:20px">
+        <h4>Books of the author</h4>
+        <!-- Se usa book.bookinstance_set por que la variable bookinstance no existe en el objeto book (la relación solo se ha declarado en BookInstance en models.py) -->
+        {% for book in author.book_set.all %}
+            <ul>
+                <li><a href="{% url 'book-detail' book.pk %}">{{ book.title }}</a></li>
+            </ul>
+        {% endfor %}
+    </div>
+{% endblock %}
