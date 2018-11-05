@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'sx_)k(g8r80(nkqiv^72k3*73^xn@%
 # DEBUG = True
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [biblioteca-luisja.herokuapp.com]
 
 
 # Application definition
